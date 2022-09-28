@@ -25,7 +25,6 @@ function setup() {
 		.atHour(9)
 		.create();
 
-	PropertiesService.getScriptProperties().setProperty('lastRun', new Date(Date.parse("2022-10-03")))
 	sync(4);
 }
 
@@ -44,7 +43,7 @@ function sync(weeks = 1) {
 	const lastRun = PropertiesService.getScriptProperties().getProperty('lastRun');
 
 	for (let week = 0; week < weeks; week++) {
-		const startDate = new Date(lastRun);
+		const startDate = lastRun ? new Date(lastRun) : new Date();
 		startDate.setDate(startDate.getDate() + week * 7);
 
 		const endDate = new Date(startDate);
