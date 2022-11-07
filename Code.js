@@ -42,7 +42,7 @@ function setup() {
 function sync(weeks = 1) {
 	const lastRun = PropertiesService.getScriptProperties().getProperty('lastRun');
 
-	for (let week = 0; week < weeks; week++) {
+	for (let week = 0; week <= weeks; week++) {
 		const startDate = lastRun ? new Date(lastRun) : new Date();
 		startDate.setDate(startDate.getDate() + week * 7);
 
